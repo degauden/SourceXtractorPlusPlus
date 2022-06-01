@@ -35,9 +35,9 @@ public:
     notifyObservers(source_group);
   }
 
-  void startThreads() override {}
-  void waitForThreads() override {}
-
+  virtual void startThreads() {};
+  virtual void stopThreads() {};
+  virtual void synchronizeThreads() {};
 };
 
 }
