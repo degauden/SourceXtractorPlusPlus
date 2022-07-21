@@ -23,6 +23,7 @@
 #include "SEUtils/KdTree.h"
 
 #include "SEImplementation/Plugin/PixelCentroid/PixelCentroid.h"
+#include "SEImplementation/Plugin/DetectionFrameInfo/DetectionFrameInfo.h"
 
 #include "SEImplementation/Plugin/AssocMode/AssocMode.h"
 #include "SEImplementation/Plugin/AssocMode/AssocModeTask.h"
@@ -79,7 +80,7 @@ AssocModeConfig::CatalogEntry getAssocEntryMaxImpl(const std::vector<AssocModeCo
 }
 
 AssocModeConfig::CatalogEntry getAssocEntryMeanImpl(const std::vector<AssocModeConfig::CatalogEntry>& entries) {
-  AssocModeConfig::CatalogEntry result;
+  AssocModeConfig::CatalogEntry result{{}, 0., {}};
   result.assoc_columns.resize(entries.front().assoc_columns.size());
   double total_weight = 0.0;
   for (auto& entry : entries) {
@@ -97,7 +98,7 @@ AssocModeConfig::CatalogEntry getAssocEntryMeanImpl(const std::vector<AssocModeC
 }
 
 AssocModeConfig::CatalogEntry getAssocEntrySumImpl(const std::vector<AssocModeConfig::CatalogEntry>& entries) {
-  AssocModeConfig::CatalogEntry result;
+  AssocModeConfig::CatalogEntry result{{}, 0., {}};
   result.assoc_columns.resize(entries.front().assoc_columns.size());
   for (auto& entry : entries) {
     for (size_t i=0; i < result.assoc_columns.size(); i++) {
@@ -108,7 +109,7 @@ AssocModeConfig::CatalogEntry getAssocEntrySumImpl(const std::vector<AssocModeCo
 }
 
 AssocModeConfig::CatalogEntry getAssocEntryMagMeanImpl(const std::vector<AssocModeConfig::CatalogEntry>& entries) {
-  AssocModeConfig::CatalogEntry result;
+  AssocModeConfig::CatalogEntry result{{}, 0., {}};
   result.assoc_columns.resize(entries.front().assoc_columns.size());
   double total_weight = 0.0;
   for (auto& entry : entries) {
@@ -127,7 +128,7 @@ AssocModeConfig::CatalogEntry getAssocEntryMagMeanImpl(const std::vector<AssocMo
 }
 
 AssocModeConfig::CatalogEntry getAssocEntryMagSumImpl(const std::vector<AssocModeConfig::CatalogEntry>& entries) {
-  AssocModeConfig::CatalogEntry result;
+  AssocModeConfig::CatalogEntry result{{}, 0., {}};
   result.assoc_columns.resize(entries.front().assoc_columns.size());
   for (auto& entry : entries) {
     for (size_t i=0; i < result.assoc_columns.size(); i++) {
@@ -144,9 +145,13 @@ AssocModeConfig::CatalogEntry getAssocEntryMagSumImpl(const std::vector<AssocMod
 
 }
 
-AssocModeTask::AssocModeTask(const std::vector<AssocModeConfig::CatalogEntry>& catalog,
+AssocModeTask::AssocModeTask(const std::vector<std::vector<AssocModeConfig::CatalogEntry>>& catalogs,
                              AssocModeConfig::AssocMode assoc_mode, double radius) :
-                             m_catalog(catalog), m_assoc_mode(assoc_mode), m_radius(radius) {}
+                             m_assoc_mode(assoc_mode), m_radius(radius) {
+  for (auto& catalog : catalogs) {
+    m_catalogs.emplace_back(catalog);
+  }
+}
 
 void AssocModeTask::computeProperties(SourceInterface &source) const {
   using namespace std::placeholders;  // for _1, _2, _3...
@@ -156,7 +161,10 @@ void AssocModeTask::computeProperties(SourceInterface &source) const {
   const auto& x = source.getProperty<PixelCentroid>().getCentroidX();
   const auto& y = source.getProperty<PixelCentroid>().getCentroidY();
 
-  auto nearby_catalog_entries = m_catalog.findPointsWithinRadius(Tree::Coord { x, y }, m_radius);
+  auto hdu_index = source.getProperty<DetectionFrameInfo>().getHduIndex();
+  const auto& catalog = m_catalogs.at(hdu_index);
+
+  auto nearby_catalog_entries = catalog.findPointsWithinRadius(Tree::Coord { x, y }, m_radius);
 
   if (nearby_catalog_entries.size() == 0) {
     // No match
