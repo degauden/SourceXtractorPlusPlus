@@ -18,6 +18,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -54,7 +55,10 @@
 <li class="toctree-l2"><a class="reference internal" href="argv.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">argv</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="output.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">output</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="measurement_images.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">measurement_images</span></code></a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">aperture</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">aperture</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#config.aperture.add_aperture_photometry"><code class="docutils literal notranslate"><span class="pre">add_aperture_photometry()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="model_fitting.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">model_fitting</span></code></a></li>
 </ul>
 </li>
@@ -94,9 +98,9 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>target</strong> (<em>MeasurementImage object</em><em>, or </em><em>leaf MeasurementGroup object with a single image</em><em>, or </em><em>a list of either</em>) – Target images on which to measure the aperture photometry. Leaf MeasurementGroup with a single image
+<li><p><strong>target</strong> (<em>MeasurementImage object</em><em>, or </em><em>leaf MeasurementGroup object with a single image</em><em>, or </em><em>a list</em><em> of </em><em>either</em>) – Target images on which to measure the aperture photometry. Leaf MeasurementGroup with a single image
 are accepted as a convenience.</p></li>
-<li><p><strong>apertures</strong> (<em>float</em><em>, or </em><em>list of float</em>) – Diameter of the aperture. As different MeasurementImage may not be aligned, nor have equivalent pixel size,
+<li><p><strong>apertures</strong> (<em>float</em><em>, or </em><em>list</em><em> of </em><em>float</em>) – Diameter of the aperture. As different MeasurementImage may not be aligned, nor have equivalent pixel size,
 the aperture is interpreted as diameter in pixels of a circle on the detection image.
 A transformation will be applied for each frame, so the covered area is equivalent.</p></li>
 </ul>

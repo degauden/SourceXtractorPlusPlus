@@ -18,6 +18,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -53,7 +54,29 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../ConfigAPI.html">Configuration API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="argv.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">argv</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="output.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">output</span></code></a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">measurement_images</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">measurement_images</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#config.measurement_images.ByKeyword"><code class="docutils literal notranslate"><span class="pre">ByKeyword</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.measurement_images.ByPattern"><code class="docutils literal notranslate"><span class="pre">ByPattern</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.measurement_images.FitsFile"><code class="docutils literal notranslate"><span class="pre">FitsFile</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.measurement_images.ImageGroup"><code class="docutils literal notranslate"><span class="pre">ImageGroup</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#config.measurement_images.ImageGroup.add_images"><code class="docutils literal notranslate"><span class="pre">ImageGroup.add_images()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.measurement_images.ImageGroup.add_subgroup"><code class="docutils literal notranslate"><span class="pre">ImageGroup.add_subgroup()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.measurement_images.ImageGroup.is_leaf"><code class="docutils literal notranslate"><span class="pre">ImageGroup.is_leaf()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.measurement_images.ImageGroup.print"><code class="docutils literal notranslate"><span class="pre">ImageGroup.print()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.measurement_images.ImageGroup.split"><code class="docutils literal notranslate"><span class="pre">ImageGroup.split()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#config.measurement_images.MeasurementGroup"><code class="docutils literal notranslate"><span class="pre">MeasurementGroup</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#config.measurement_images.MeasurementGroup.is_leaf"><code class="docutils literal notranslate"><span class="pre">MeasurementGroup.is_leaf()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.measurement_images.MeasurementGroup.print"><code class="docutils literal notranslate"><span class="pre">MeasurementGroup.print()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#config.measurement_images.MeasurementImage"><code class="docutils literal notranslate"><span class="pre">MeasurementImage</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.measurement_images.load_fits_image"><code class="docutils literal notranslate"><span class="pre">load_fits_image()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.measurement_images.load_fits_images"><code class="docutils literal notranslate"><span class="pre">load_fits_images()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.measurement_images.print_measurement_images"><code class="docutils literal notranslate"><span class="pre">print_measurement_images()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="aperture.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">aperture</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_fitting.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">model_fitting</span></code></a></li>
 </ul>
@@ -351,13 +374,13 @@ to variance units.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>images</strong> (<em>list of str</em>) – <dl class="simple">
+<li><p><strong>images</strong> (<em>list</em><em> of </em><em>str</em>) – <dl class="simple">
 <dt>A list of relative paths to the images FITS files. Can also be single string in which case,</dt><dd><p>this function acts like load_fits_image</p>
 </dd>
 </dl>
 </p></li>
-<li><p><strong>psfs</strong> (<em>list of str</em>) – A list of relative paths to the PSF FITS files (optional). It must match the length of image_list or be None.</p></li>
-<li><p><strong>weights</strong> (<em>list of str</em>) – A list of relative paths to the weight files (optional). It must match the length of image_list or be None.</p></li>
+<li><p><strong>psfs</strong> (<em>list</em><em> of </em><em>str</em>) – A list of relative paths to the PSF FITS files (optional). It must match the length of image_list or be None.</p></li>
+<li><p><strong>weights</strong> (<em>list</em><em> of </em><em>str</em>) – A list of relative paths to the weight files (optional). It must match the length of image_list or be None.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
