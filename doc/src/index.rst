@@ -18,8 +18,11 @@ Contents
    Installing
    Using
    Processing
+   Association
    Measurements
+   TestData
    ConfigAPI
+   Troubles
    references
 
 Indices and tables

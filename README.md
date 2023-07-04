@@ -17,26 +17,28 @@ Documentation: https://astrorama.github.io/SourceXtractorPlusPlus/
 SourceXtractor++ is available on [Anaconda Cloud for Linux and MacOSX](https://anaconda.org/astrorama/sourcextractor)
 
 ```bash
-conda install -c conda-forge -c astrorama sourcextractor
+conda install -c conda-forge -c astrorama sourcextractor==0.19.2
  ```
 
 We would recommend, however, to install it into its own environment.
 
 ```bash
-conda create -n sourcex -c astrorama -c conda-forge sourcextractor
+conda create -n sourcex -c astrorama -c conda-forge sourcextractor==0.19.2
 conda activate sourcex
  ```
 
 **Note:** If you want the development version to test a future functionality or bugfix, it can also be done with conda:
 
 ```bash
-conda create -n sourcex-dev -c astrorama/label/develop -c astrorama -c conda-forge sourcextractor
+conda create -n sourcex-dev -c astrorama/label/develop -c astrorama -c conda-forge sourcextractor=x.xx
 conda activate sourcex-dev
 ```
 
-## Fedora / CentOS
+We recommend always using an explicit version number as there is no guarantee that `conda` will install the latest version otherwise.
 
-SourceXtractor++ is shipped directly in Fedora and CentOS. It can be installed simply as follows:
+## Fedora
+
+SourceXtractor++ is shipped directly in Fedora. It can be installed simply as follows:
 
 ```bash
 sudo dnf install sourcextractor++
@@ -76,6 +78,20 @@ And install with
 dnf install SourceXtractorPlusPlus
 ```
 
+## Test Data Set
+
+A test data set covering various data reduction scenarios is available [here](https://cloud.physik.lmu.de/index.php/s/3K4KemBsw5y9yqd).
+It contains the input data, all relevant configuration files, the SourceXtractor++ commands and the expected output results for a reference.
+The test data set is described as a [pre-print](http://arxiv.org/abs/2212.02428) for the corresponding conference proceedings.
+
+## Discussion group for SourceXtractor++ users
+
+In order to facilitate an active discussion among SourceXtractor++ users we have created
+a [users group](https://groups.google.com/g/sourcextractor_plusplus). We encourage all users to directly
+join the group (if a google account is at hand) or to ask us to add you as a member
+(open an issue on the [github page](https://astrorama.github.io/SourceXtractorPlusPlus/).
+
+
 ## References and Acknowledgment
 
 While we are working on several refereed papers describing SourceXtractor++ and its software architecture, the software package can be referenced with two ADASS conference proceedings:
@@ -83,7 +99,7 @@ While we are working on several refereed papers describing SourceXtractor++ and 
 - [Bertin, E.; Schefer, M. ; Apostolakos, N. ; Álvarez-Ayllón, A.; Dubath, P. ; Kümmel, M.: 2020ASPC..527..461B](https://ui.adsabs.harvard.edu/abs/2020ASPC..527..461B/abstract)
 - [Kümmel, M. ; Bertin, E.; Schefer, M. ; Apostolakos, N. ; Álvarez-Ayllón, A.; Dubath, P.: 2020ASPC..527...29K](https://ui.adsabs.harvard.edu/abs/2020ASPC..527...29K/abstract) 
 
-The ressources for the SourceXtractor++ development are mostly provided by funding from the Euclid satellite project via the various national agencies.
+Resources for the SourceXtractor++ development are in most part provided by funding from the [Euclid satellite project](https://www.euclid-ec.org/) via the various national agencies.
 For Euclid Consortium papers it is sufficient to point to the [SourceXtractor++ webpage](https://github.com/astrorama/SourceXtractorPlusPlus) and add
 the standard EC acknowledgement text.
 
