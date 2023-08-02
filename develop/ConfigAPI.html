@@ -23,7 +23,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="argv" href="config_api/argv.html" />
-    <link rel="prev" title="Model fitting" href="Model.html" /> 
+    <link rel="prev" title="Test Data Set" href="TestData.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -31,14 +31,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> SourceXtractor++
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            SourceXtractor++
           </a>
               <div class="version">
                 1.0.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -50,7 +54,9 @@
 <li class="toctree-l1"><a class="reference internal" href="Installing.html">Installing the software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Using.html">Using SourceXtractor++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Processing.html">Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Association.html">Asociation Mode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Measurements.html">Measuring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TestData.html">Test Data Set</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="config_api/argv.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">argv</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_api/output.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">output</span></code></a></li>
@@ -59,6 +65,7 @@
 <li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">model_fitting</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="Troubles.html">Troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">Bibliography</a></li>
 </ul>
 
@@ -75,8 +82,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Configuration API Reference</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Configuration API Reference</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -94,14 +101,11 @@
 <li class="toctree-l2"><a class="reference internal" href="config_api/argv.html#config.argv.FileList"><code class="docutils literal notranslate"><span class="pre">FileList</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="config_api/output.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">output</span></code></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="config_api/output.html#config.output.add_output_column"><code class="docutils literal notranslate"><span class="pre">add_output_column()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="config_api/output.html#config.output.print_output_columns"><code class="docutils literal notranslate"><span class="pre">print_output_columns()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="config_api/output.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">output</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="config_api/measurement_images.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">measurement_images</span></code></a><ul>
 <li class="toctree-l2"><a class="reference internal" href="config_api/measurement_images.html#config.measurement_images.ByKeyword"><code class="docutils literal notranslate"><span class="pre">ByKeyword</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_api/measurement_images.html#config.measurement_images.ByPattern"><code class="docutils literal notranslate"><span class="pre">ByPattern</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_api/measurement_images.html#config.measurement_images.DataCubeSlice"><code class="docutils literal notranslate"><span class="pre">DataCubeSlice</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_api/measurement_images.html#config.measurement_images.FitsFile"><code class="docutils literal notranslate"><span class="pre">FitsFile</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_api/measurement_images.html#config.measurement_images.ImageGroup"><code class="docutils literal notranslate"><span class="pre">ImageGroup</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="config_api/measurement_images.html#config.measurement_images.ImageGroup.add_images"><code class="docutils literal notranslate"><span class="pre">ImageGroup.add_images()</span></code></a></li>
@@ -117,15 +121,9 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="config_api/measurement_images.html#config.measurement_images.MeasurementImage"><code class="docutils literal notranslate"><span class="pre">MeasurementImage</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="config_api/measurement_images.html#config.measurement_images.load_fits_image"><code class="docutils literal notranslate"><span class="pre">load_fits_image()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="config_api/measurement_images.html#config.measurement_images.load_fits_images"><code class="docutils literal notranslate"><span class="pre">load_fits_images()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="config_api/measurement_images.html#config.measurement_images.print_measurement_images"><code class="docutils literal notranslate"><span class="pre">print_measurement_images()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="config_api/aperture.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">aperture</span></code></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="config_api/aperture.html#config.aperture.add_aperture_photometry"><code class="docutils literal notranslate"><span class="pre">add_aperture_photometry()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="config_api/aperture.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">aperture</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="config_api/model_fitting.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">model_fitting</span></code></a><ul>
 <li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.ComputeGraphModel"><code class="docutils literal notranslate"><span class="pre">ComputeGraphModel</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.ComputeGraphModel.to_string"><code class="docutils literal notranslate"><span class="pre">ComputeGraphModel.to_string()</span></code></a></li>
@@ -179,8 +177,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.WorldCoordinate"><code class="docutils literal notranslate"><span class="pre">WorldCoordinate</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.add_model"><code class="docutils literal notranslate"><span class="pre">add_model()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.add_prior"><code class="docutils literal notranslate"><span class="pre">add_prior()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.get_flux_parameter"><code class="docutils literal notranslate"><span class="pre">get_flux_parameter()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.get_pos_parameters"><code class="docutils literal notranslate"><span class="pre">get_pos_parameters()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.get_position_angle"><code class="docutils literal notranslate"><span class="pre">get_position_angle()</span></code></a></li>
@@ -190,15 +186,7 @@
 <li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.get_world_position_parameters"><code class="docutils literal notranslate"><span class="pre">get_world_position_parameters()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.pixel_to_world_coordinate"><code class="docutils literal notranslate"><span class="pre">pixel_to_world_coordinate()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.print_model_fitting_info"><code class="docutils literal notranslate"><span class="pre">print_model_fitting_info()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.print_parameters"><code class="docutils literal notranslate"><span class="pre">print_parameters()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.radius_to_wc_angle"><code class="docutils literal notranslate"><span class="pre">radius_to_wc_angle()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.set_deblend_factor"><code class="docutils literal notranslate"><span class="pre">set_deblend_factor()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.set_engine"><code class="docutils literal notranslate"><span class="pre">set_engine()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.set_max_iterations"><code class="docutils literal notranslate"><span class="pre">set_max_iterations()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.set_meta_iteration_stop"><code class="docutils literal notranslate"><span class="pre">set_meta_iteration_stop()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.set_meta_iterations"><code class="docutils literal notranslate"><span class="pre">set_meta_iterations()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.set_modified_chi_squared_scale"><code class="docutils literal notranslate"><span class="pre">set_modified_chi_squared_scale()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="config_api/model_fitting.html#config.model_fitting.use_iterative_fitting"><code class="docutils literal notranslate"><span class="pre">use_iterative_fitting()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -209,14 +197,14 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Model.html" class="btn btn-neutral float-left" title="Model fitting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="TestData.html" class="btn btn-neutral float-left" title="Test Data Set" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="config_api/argv.html" class="btn btn-neutral float-right" title="argv" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2019,2020 GenevaU/LMU/CNRS/SorbonneU.</p>
+    <p>&#169; Copyright 2019,2020,2021,2022 GenevaU/LMU/CNRS/SorbonneU.</p>
   </div>
 
    

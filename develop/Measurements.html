@@ -23,7 +23,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Isophotal measurements" href="Position.html" />
-    <link rel="prev" title="Flagging" href="Flagging.html" /> 
+    <link rel="prev" title="Asociation Mode" href="Association.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -31,14 +31,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> SourceXtractor++
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            SourceXtractor++
           </a>
               <div class="version">
                 1.0.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -50,6 +54,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Installing.html">Installing the software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Using.html">Using SourceXtractor++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Processing.html">Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Association.html">Asociation Mode</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Measuring</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#the-measurement-configuration-script">The measurement configuration script</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#measurement-images">Measurement images</a></li>
@@ -70,7 +75,9 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="TestData.html">Test Data Set</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ConfigAPI.html">Configuration API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Troubles.html">Troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">Bibliography</a></li>
 </ul>
 
@@ -87,8 +94,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Measuring</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Measuring</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -137,11 +144,11 @@ Thanks to its flexibility, the Python language makes it possible to set up arbit
 <h3>Measurement images<a class="headerlink" href="#measurement-images" title="Permalink to this heading">¶</a></h3>
 <p>Measurement images are scientific images stored as <a class="reference external" href="http://fits.gsfc.nasa.gov"><abbr title="Flexible Image Transport System">FITS</abbr></a> files and used only for measurements.
 Every measurement image can be associated a <abbr title="Point Spread Function">PSF</abbr> model (<strong class="program">PSFEx</strong>’s <code class="file docutils literal notranslate"><span class="pre">.psf</span></code> file), and a weight map.
-The <a class="reference internal" href="config_api/measurement_images.html#config.measurement_images.load_fits_image" title="config.measurement_images.load_fits_image"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_fits_image()</span></code></a> function creates a measurement image from a <abbr title="Flexible Image Transport System">FITS</abbr> image filename; for example:</p>
+The <code class="xref py py-func docutils literal notranslate"><span class="pre">load_fits_image()</span></code> function creates a measurement image from a <abbr title="Flexible Image Transport System">FITS</abbr> image filename; for example:</p>
 <div class="highlight-python notranslate" id="chap-load-fits-image"><div class="highlight"><pre><span></span><span class="n">mesimage</span> <span class="o">=</span> <span class="n">load_fits_image</span><span class="p">(</span><span class="s2">&quot;image.fits&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The list of currently loaded measurement images can be displayed using the <a class="reference internal" href="config_api/measurement_images.html#config.measurement_images.print_measurement_images" title="config.measurement_images.print_measurement_images"><code class="xref py py-func docutils literal notranslate"><span class="pre">print_measurement_images()</span></code></a> function.
+<p>The list of currently loaded measurement images can be displayed using the <code class="xref py py-func docutils literal notranslate"><span class="pre">print_measurement_images()</span></code> function.
 The following will print the list of measurement images on screen (more precisely, on the <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)">stderr</a> channel):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">print_measurement_images</span><span class="p">()</span>
 </pre></div>
@@ -159,7 +166,7 @@ This is the purpose of <strong class="program">SourceXtractor++</strong>’s gro
 <section id="image-groups">
 <span id="id1"></span><h4>Image groups<a class="headerlink" href="#image-groups" title="Permalink to this heading">¶</a></h4>
 <p>Image groups offer a convenient way to load many images, and group them according to specific criteria.
-The most efficient way to instantiate an image group is through the <a class="reference internal" href="config_api/measurement_images.html#config.measurement_images.load_fits_images" title="config.measurement_images.load_fits_images"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_fits_images()</span></code></a> function:</p>
+The most efficient way to instantiate an image group is through the <code class="xref py py-func docutils literal notranslate"><span class="pre">load_fits_images()</span></code> function:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">imagegroup</span> <span class="o">=</span> <span class="n">load_fits_images</span><span class="p">([</span><span class="s2">&quot;image_01.fits&quot;</span><span class="p">,</span> <span class="s2">&quot;image_02.fits&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -268,14 +275,14 @@ A measurement group (<a class="reference internal" href="config_api/measurement_
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Flagging.html" class="btn btn-neutral float-left" title="Flagging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Association.html" class="btn btn-neutral float-left" title="Asociation Mode" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="Position.html" class="btn btn-neutral float-right" title="Isophotal measurements" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2019,2020 GenevaU/LMU/CNRS/SorbonneU.</p>
+    <p>&#169; Copyright 2019,2020,2021,2022 GenevaU/LMU/CNRS/SorbonneU.</p>
   </div>
 
    
